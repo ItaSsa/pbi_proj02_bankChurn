@@ -610,6 +610,69 @@
             }
           }
         ]
+      },
+      {
+        "name": "tb_Measures",
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "1535a59d6e9e4b8dac995b5d72b989f1"
+          },
+          {
+            "name": "436ba87b-9c83-4389-a31b-ebd06a36be98",
+            "value": "{\"Expression\":\"\"}"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Column",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isNameInferred": true,
+            "lineageTag": "51b080c1-0aa5-4845-8029-6739a8702e1c",
+            "sourceColumn": "[Column]",
+            "summarizeBy": "sum",
+            "type": "calculatedTableColumn"
+          }
+        ],
+        "lineageTag": "53a5adf5-fb77-4f8d-ac59-8cea37a8de85",
+        "measures": [
+          {
+            "name": "Lost Customers",
+            "expression": "CALCULATE(COUNT('Bank Customer Churn Prediction'[Churn]),'Bank Customer Churn Prediction'[Churn] =\"Churned\")",
+            "formatString": "0",
+            "lineageTag": "0413ec83-93b1-41d4-9390-10f18dae619e"
+          },
+          {
+            "name": "Total Customers",
+            "expression": "COUNT('Bank Customer Churn Prediction'[Customer Id])",
+            "formatString": "0",
+            "lineageTag": "2c4689ba-e226-40f0-ab8c-95cbbaf24884"
+          },
+          {
+            "name": "Churn Rate",
+            "expression": "[Lost Customers] /[Total Customers]",
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "2d26139a-76f3-4a72-ad3f-9f10d01313d8"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "tb_Measures-f0427258-3ac1-4c14-b78f-a903b72c5d8d",
+            "mode": "import",
+            "source": {
+              "expression": "Row(\"Column\", BLANK())",
+              "type": "calculated"
+            }
+          }
+        ]
       }
     ]
   }
