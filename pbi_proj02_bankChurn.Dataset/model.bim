@@ -9,6 +9,14 @@
       {
         "name": "PBIDesktopVersion",
         "value": "2.118.828.0 (23.06)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Bank Customer Churn Prediction\",\"Age Bins Groups\",\"Credit Score Bins Groups\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "1"
       }
     ],
     "culture": "en-US",
@@ -23,6 +31,585 @@
           },
           "contentType": "json"
         }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "86e0fb8b-a95a-4826-bf13-5a77926b9c87",
+        "fromColumn": "Credit Score Bins",
+        "fromTable": "Bank Customer Churn Prediction",
+        "toColumn": "Credit Score Bins",
+        "toTable": "Credit Score Bins Groups"
+      },
+      {
+        "name": "52180c1a-413d-412c-9c87-7dc84716ce01",
+        "fromColumn": "Age Bins",
+        "fromTable": "Bank Customer Churn Prediction",
+        "toColumn": "Age Bins",
+        "toTable": "Age Bins Groups"
+      }
+    ],
+    "sourceQueryCulture": "en-NL",
+    "tables": [
+      {
+        "name": "Age Bins Groups",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Age Bins",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "05cebb25-d3f5-4d99-b5d5-7173069229d2",
+            "sourceColumn": "Age Bins",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "496b65ca-8fe5-41f9-831e-7caee80cdaba",
+        "partitions": [
+          {
+            "name": "Age Bins Groups-0db2ab21-2401-4af9-b474-4002e2bfee4c",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\ItaFiles_PowerBI\\PowerBI_Projects\\pbi_proj02_bankChurn\\Dataset\\Bank Customer Churn Prediction.csv\"),[Delimiter=\",\", Columns=12, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customer_id\", Int64.Type}, {\"credit_score\", Int64.Type}, {\"country\", type text}, {\"gender\", type text}, {\"age\", Int64.Type}, {\"tenure\", Int64.Type}, {\"balance\", Int64.Type}, {\"products_number\", Int64.Type}, {\"credit_card\", Int64.Type}, {\"active_member\", Int64.Type}, {\"estimated_salary\", Int64.Type}, {\"churn\", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"customer_id\", \"Customer Id\"}, {\"credit_score\", \"Credit Score\"}, {\"country\", \"Country\"}, {\"gender\", \"Gender\"}, {\"age\", \"Age\"}, {\"tenure\", \"Tenure\"}, {\"balance\", \"Balance\"}, {\"products_number\", \"Products Number\"}, {\"credit_card\", \"Card Holder\"}, {\"active_member\", \"Active Member\"}, {\"estimated_salary\", \"Estimated Salary\"}, {\"churn\", \"Churn\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Churn\", type text}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type1\",\"1\",\"Churned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"0\",\"Unchurned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Added Conditional Column\" = Table.AddColumn(#\"Replaced Value1\", \"Credit Score Bins\", each if [Credit Score] <= 400 then \"<= 400\" else if [Credit Score] <= 500 then \"401-500\" else if [Credit Score] <= 600 then \"501-600\" else if [Credit Score] <= 700 then \"601-700\" else if [Credit Score] <= 800 then \"701-800\" else if [Credit Score] >= 800 then \">800\" else null),",
+                "    #\"Added Conditional Column1\" = Table.AddColumn(#\"Added Conditional Column\", \"Age Bins\", each if [Age] < 20 then \"<20\" else if [Age] = 20 then 20 else if [Age] <= 30 then \"21-30\" else if [Age] <= 40 then \"31-40\" else if [Age] <= 50 then \"41-50\" else if [Age] <= 60 then \"51-60\" else if [Age] <= 70 then \"61-70\" else if [Age] > 70 then \">70\" else null),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Added Conditional Column1\",{\"Age Bins\"}),",
+                "    #\"Removed Duplicates\" = Table.Distinct(#\"Removed Other Columns\")",
+                "in",
+                "    #\"Removed Duplicates\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Bank Customer Churn Prediction",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Active Member",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "91e24377-1cc7-4525-b454-a0d451794adc",
+            "sourceColumn": "Active Member",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Age",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "62bb50f0-fc19-42fe-a122-79bf17bb3e0f",
+            "sourceColumn": "Age",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Age Bins",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "be4088ed-4437-475b-ad90-ba3e1f00a1b6",
+            "sourceColumn": "Age Bins",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Balance",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "1e7f0b29-3445-4020-87e5-6653e2d2a2fa",
+            "sourceColumn": "Balance",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Card Holder",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "bba56d2b-cac6-40f1-9ee3-e3682c3384f2",
+            "sourceColumn": "Card Holder",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Churn",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "9ce62858-04a3-485d-94aa-679683ccd581",
+            "sourceColumn": "Churn",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Country",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "18c6e7ae-b3e7-4095-9aaa-c2ec05a84337",
+            "sourceColumn": "Country",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Credit Score",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "df210fbe-4205-4279-bc96-6ff10fa1c05b",
+            "sourceColumn": "Credit Score",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Credit Score Bins",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bb42535c-263e-45e4-9b9f-997eb781b93d",
+            "sourceColumn": "Credit Score Bins",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer Id",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e63731ff-3b82-4a6c-b561-6ad327823bf4",
+            "sourceColumn": "Customer Id",
+            "summarizeBy": "count"
+          },
+          {
+            "name": "Estimated Salary",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "f26e44a7-da82-48f7-9f64-fe4812ee0bf0",
+            "sourceColumn": "Estimated Salary",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Gender",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "3bbe4fc1-2fba-402f-9d8f-eef52b166914",
+            "sourceColumn": "Gender",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Products Number",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "78dddba0-de88-41c8-9f8a-bec3f1a49077",
+            "sourceColumn": "Products Number",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "Tenure",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "7ede2cac-f978-465e-852e-989b3377133a",
+            "sourceColumn": "Tenure",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "d04e807d-a547-4c7a-b498-ddb274934481",
+        "partitions": [
+          {
+            "name": "Bank Customer Churn Prediction-773803e9-0d7a-49ac-97f9-be522d2edde7",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\ItaFiles_PowerBI\\PowerBI_Projects\\pbi_proj02_bankChurn\\Dataset\\Bank Customer Churn Prediction.csv\"),[Delimiter=\",\", Columns=12, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customer_id\", Int64.Type}, {\"credit_score\", Int64.Type}, {\"country\", type text}, {\"gender\", type text}, {\"age\", Int64.Type}, {\"tenure\", Int64.Type}, {\"balance\", Int64.Type}, {\"products_number\", Int64.Type}, {\"credit_card\", Int64.Type}, {\"active_member\", Int64.Type}, {\"estimated_salary\", Int64.Type}, {\"churn\", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"customer_id\", \"Customer Id\"}, {\"credit_score\", \"Credit Score\"}, {\"country\", \"Country\"}, {\"gender\", \"Gender\"}, {\"age\", \"Age\"}, {\"tenure\", \"Tenure\"}, {\"balance\", \"Balance\"}, {\"products_number\", \"Products Number\"}, {\"credit_card\", \"Card Holder\"}, {\"active_member\", \"Active Member\"}, {\"estimated_salary\", \"Estimated Salary\"}, {\"churn\", \"Churn\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Churn\", type text}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type1\",\"1\",\"Churned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"0\",\"Unchurned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Added Conditional Column\" = Table.AddColumn(#\"Replaced Value1\", \"Credit Score Bins\", each if [Credit Score] <= 400 then \"<= 400\" else if [Credit Score] <= 500 then \"401-500\" else if [Credit Score] <= 600 then \"501-600\" else if [Credit Score] <= 700 then \"601-700\" else if [Credit Score] <= 800 then \"701-800\" else if [Credit Score] >= 800 then \">800\" else null),",
+                "    #\"Added Conditional Column1\" = Table.AddColumn(#\"Added Conditional Column\", \"Age Bins\", each if [Age] < 20 then \"<20\" else if [Age] = 20 then 20 else if [Age] <= 30 then \"21-30\" else if [Age] <= 40 then \"31-40\" else if [Age] <= 50 then \"41-50\" else if [Age] <= 60 then \"51-60\" else if [Age] <= 70 then \"61-70\" else if [Age] > 70 then \">70\" else null)",
+                "in",
+                "    #\"Added Conditional Column1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Credit Score Bins Groups",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Credit Score Bins",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8c570be3-3148-4c8d-b75a-5c110297584a",
+            "sourceColumn": "Credit Score Bins",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "4dcf576f-cda2-49b0-ac89-c4abf7641861",
+        "partitions": [
+          {
+            "name": "Credit Score Bins Groups-b46c60b2-4f1c-49e6-8a6b-82789e3e34a8",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"C:\\ItaFiles_PowerBI\\PowerBI_Projects\\pbi_proj02_bankChurn\\Dataset\\Bank Customer Churn Prediction.csv\"),[Delimiter=\",\", Columns=12, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"customer_id\", Int64.Type}, {\"credit_score\", Int64.Type}, {\"country\", type text}, {\"gender\", type text}, {\"age\", Int64.Type}, {\"tenure\", Int64.Type}, {\"balance\", Int64.Type}, {\"products_number\", Int64.Type}, {\"credit_card\", Int64.Type}, {\"active_member\", Int64.Type}, {\"estimated_salary\", Int64.Type}, {\"churn\", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"customer_id\", \"Customer Id\"}, {\"credit_score\", \"Credit Score\"}, {\"country\", \"Country\"}, {\"gender\", \"Gender\"}, {\"age\", \"Age\"}, {\"tenure\", \"Tenure\"}, {\"balance\", \"Balance\"}, {\"products_number\", \"Products Number\"}, {\"credit_card\", \"Card Holder\"}, {\"active_member\", \"Active Member\"}, {\"estimated_salary\", \"Estimated Salary\"}, {\"churn\", \"Churn\"}}),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Renamed Columns\",{{\"Churn\", type text}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Changed Type1\",\"1\",\"Churned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Replaced Value1\" = Table.ReplaceValue(#\"Replaced Value\",\"0\",\"Unchurned\",Replacer.ReplaceText,{\"Churn\"}),",
+                "    #\"Added Conditional Column\" = Table.AddColumn(#\"Replaced Value1\", \"Credit Score Bins\", each if [Credit Score] <= 400 then \"<= 400\" else if [Credit Score] <= 500 then \"401-500\" else if [Credit Score] <= 600 then \"501-600\" else if [Credit Score] <= 700 then \"601-700\" else if [Credit Score] <= 800 then \"701-800\" else if [Credit Score] >= 800 then \">800\" else null),",
+                "    #\"Added Conditional Column1\" = Table.AddColumn(#\"Added Conditional Column\", \"Age Bins\", each if [Age] < 20 then \"<20\" else if [Age] = 20 then 20 else if [Age] <= 30 then \"21-30\" else if [Age] <= 40 then \"31-40\" else if [Age] <= 50 then \"41-50\" else if [Age] <= 60 then \"51-60\" else if [Age] <= 70 then \"61-70\" else if [Age] > 70 then \">70\" else null),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Added Conditional Column1\",{\"Credit Score Bins\"}),",
+                "    #\"Removed Duplicates\" = Table.Distinct(#\"Removed Other Columns\")",
+                "in",
+                "    #\"Removed Duplicates\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DateTableTemplate_9198d5f8-4458-4e45-a14d-cb5413ae550f",
+        "annotations": [
+          {
+            "name": "__PBI_TemplateDateTable",
+            "value": "true"
+          },
+          {
+            "name": "DefaultItem",
+            "value": "DateHierarchy"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              }
+            ],
+            "dataCategory": "PaddedDateTableDates",
+            "dataType": "dateTime",
+            "formatString": "General Date",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "isNameInferred": true,
+            "lineageTag": "db4d2312-6238-45b7-8b80-c03fc27a9749",
+            "sourceColumn": "[Date]",
+            "summarizeBy": "none",
+            "type": "calculatedTableColumn"
+          },
+          {
+            "name": "Day",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Day"
+              }
+            ],
+            "dataCategory": "DayOfMonth",
+            "dataType": "int64",
+            "expression": "DAY([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "99234eb9-48a1-408c-89c9-4d2d2ade66d7",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Month",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Month"
+              }
+            ],
+            "dataCategory": "Months",
+            "dataType": "string",
+            "expression": "FORMAT([Date], \"MMMM\")",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "b32bd696-e6c0-491c-b369-8bb25788c70e",
+            "sortByColumn": "MonthNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "MonthNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "MonthNumber"
+              }
+            ],
+            "dataCategory": "MonthOfYear",
+            "dataType": "int64",
+            "expression": "MONTH([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "7701973f-03b8-4955-adc1-d26a9c892e80",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Quarter",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Quarter"
+              }
+            ],
+            "dataCategory": "Quarters",
+            "dataType": "string",
+            "expression": "\"Qtr \" & [QuarterNo]",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "d9f08d7b-adf4-4ff9-9459-13eacaa45c95",
+            "sortByColumn": "QuarterNo",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "QuarterNo",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "QuarterNumber"
+              }
+            ],
+            "dataCategory": "QuarterOfYear",
+            "dataType": "int64",
+            "expression": "INT(([MonthNo] + 2) / 3)",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "f0bc58e6-3798-47f1-9562-0f17754fd6b9",
+            "summarizeBy": "none",
+            "type": "calculated"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "TemplateId",
+                "value": "Year"
+              }
+            ],
+            "dataCategory": "Years",
+            "dataType": "int64",
+            "expression": "YEAR([Date])",
+            "formatString": "0",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "lineageTag": "98787c5f-da09-4a78-bf18-f8b83d2bae09",
+            "summarizeBy": "none",
+            "type": "calculated"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Date Hierarchy",
+            "annotations": [
+              {
+                "name": "TemplateId",
+                "value": "DateHierarchy"
+              }
+            ],
+            "levels": [
+              {
+                "name": "Year",
+                "column": "Year",
+                "lineageTag": "7711b2e4-60fc-4e16-977a-4400bd506baa",
+                "ordinal": 0
+              },
+              {
+                "name": "Quarter",
+                "column": "Quarter",
+                "lineageTag": "83c02404-5b71-463f-ad95-89f207d1124e",
+                "ordinal": 1
+              },
+              {
+                "name": "Month",
+                "column": "Month",
+                "lineageTag": "e7a816ab-a6af-4d30-a245-82c23585b10f",
+                "ordinal": 2
+              },
+              {
+                "name": "Day",
+                "column": "Day",
+                "lineageTag": "f1cee208-c957-4aa0-8191-f8cb8ad00238",
+                "ordinal": 3
+              }
+            ],
+            "lineageTag": "5c95d60e-775d-4b79-aad2-0e5f1b789092"
+          }
+        ],
+        "isHidden": true,
+        "isPrivate": true,
+        "lineageTag": "c593f47f-85f5-46e8-889a-a604c9de0e20",
+        "partitions": [
+          {
+            "name": "DateTableTemplate_9198d5f8-4458-4e45-a14d-cb5413ae550f-b8a94621-9ea7-4fd7-be93-026afbc67c13",
+            "mode": "import",
+            "source": {
+              "expression": "Calendar(Date(2015,1,1), Date(2015,1,1))",
+              "type": "calculated"
+            }
+          }
+        ]
       }
     ]
   }
