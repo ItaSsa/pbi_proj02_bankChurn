@@ -1,5 +1,5 @@
 {
-  "compatibilityLevel": 1550,
+  "compatibilityLevel": 1567,
   "model": {
     "annotations": [
       {
@@ -131,25 +131,30 @@
                 "value": "Automatic"
               }
             ],
-            "dataType": "int64",
-            "formatString": "0",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "lineageTag": "91e24377-1cc7-4525-b454-a0d451794adc",
             "sourceColumn": "Active Member",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Age",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "int64",
             "formatString": "0",
             "lineageTag": "62bb50f0-fc19-42fe-a122-79bf17bb3e0f",
             "sourceColumn": "Age",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Age Bins",
@@ -186,11 +191,16 @@
                 "value": "Automatic"
               }
             ],
-            "dataType": "int64",
-            "formatString": "0",
+            "changedProperties": [
+              {
+                "property": "DataType"
+              }
+            ],
+            "dataType": "boolean",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
             "lineageTag": "bba56d2b-cac6-40f1-9ee3-e3682c3384f2",
             "sourceColumn": "Card Holder",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Churn",
@@ -223,14 +233,14 @@
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "int64",
             "formatString": "0",
             "lineageTag": "df210fbe-4205-4279-bc96-6ff10fa1c05b",
             "sourceColumn": "Credit Score",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Credit Score Bins",
@@ -291,28 +301,28 @@
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "int64",
             "formatString": "0",
             "lineageTag": "78dddba0-de88-41c8-9f8a-bec3f1a49077",
             "sourceColumn": "Products Number",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           },
           {
             "name": "Tenure",
             "annotations": [
               {
                 "name": "SummarizationSetBy",
-                "value": "Automatic"
+                "value": "User"
               }
             ],
             "dataType": "int64",
             "formatString": "0",
             "lineageTag": "7ede2cac-f978-465e-852e-989b3377133a",
             "sourceColumn": "Tenure",
-            "summarizeBy": "sum"
+            "summarizeBy": "none"
           }
         ],
         "lineageTag": "d04e807d-a547-4c7a-b498-ddb274934481",

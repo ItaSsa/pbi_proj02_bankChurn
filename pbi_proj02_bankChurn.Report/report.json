@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.44\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU04\",\"version\":\"5.45\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "config": "{\"version\":\"5.44\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU04\",\"version\":\"5.45\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -27,6 +27,51 @@
       "name": "ReportSection",
       "visualContainers": [
         {
+          "config": "{\"name\":\"22864ae50a52b7c74a2a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":858.132427843803,\"y\":251.81663837011885,\"z\":7000,\"width\":286.044142614601,\"height\":217.5891341256367,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Active Member\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Active Member\"},\"Name\":\"Bank Customer Churn Prediction.Active Member\",\"NativeReferenceName\":\"Active Member\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 217.59,
+          "width": 286.04,
+          "x": 858.13,
+          "y": 251.82,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"275edec49fc8f0ef1dee\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":492.63157894736844,\"z\":9000,\"width\":419.28692699490665,\"height\":227.3684210526316,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Age Bins\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Y2\":[{\"queryRef\":\"tb_Measures.Churn Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0},{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Age Bins\"},\"Name\":\"Bank Customer Churn Prediction.Age Bins\",\"NativeReferenceName\":\"Age Bins\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"tb_Measures.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 227.37,
+          "width": 419.29,
+          "x": 0.00,
+          "y": 492.63,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"286bcfafd4a6b20fb832\",\"layouts\":[{\"id\":0,\"position\":{\"x\":572.088285229202,\"y\":94.12563667232598,\"z\":8000,\"width\":303.15789473684214,\"height\":157.69100169779287,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Gender\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Gender\"},\"Name\":\"Bank Customer Churn Prediction.Gender\",\"NativeReferenceName\":\"Gender\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 157.69,
+          "width": 303.16,
+          "x": 572.09,
+          "y": 94.13,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"370504e08dca45dc19b1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":572.088285229202,\"y\":251.81663837011885,\"z\":6000,\"width\":286.044142614601,\"height\":217.5891341256367,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Card Holder\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Card Holder\"},\"Name\":\"Bank Customer Churn Prediction.Card Holder\",\"NativeReferenceName\":\"Card Holder\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 217.59,
+          "width": 286.04,
+          "x": 572.09,
+          "y": 251.82,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"6a22c47ff9020d6bbd34\",\"layouts\":[{\"id\":0,\"position\":{\"x\":875.2461799660441,\"y\":492.63157894736844,\"z\":11000,\"width\":404.61799660441426,\"height\":216.36672325976232,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Series\":[{\"queryRef\":\"Bank Customer Churn Prediction.Gender\"}],\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Country\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Churn)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Gender\"},\"Name\":\"Bank Customer Churn Prediction.Gender\",\"NativeReferenceName\":\"Gender\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Country\"},\"Name\":\"Bank Customer Churn Prediction.Country\",\"NativeReferenceName\":\"Country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Churn\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Churn)\",\"NativeReferenceName\":\"Count of Churn\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Churn\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 216.37,
+          "width": 404.62,
+          "x": 875.25,
+          "y": 492.63,
+          "z": 11000.00
+        },
+        {
           "config": "{\"name\":\"7d3c9b9575a046927f05\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.597322175732218,\"y\":0,\"z\":0,\"width\":1270.9596652719665,\"height\":63.068117154811716,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\" Bank Churn Analysis\",\"textStyle\":{\"fontFamily\":\"Verdana\",\"fontSize\":\"32pt\"}}],\"horizontalTextAlignment\":\"center\"}]}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"8D\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
           "filters": "[]",
           "height": 63.07,
@@ -36,31 +81,67 @@
           "z": 0.00
         },
         {
-          "config": "{\"name\":\"b4509fcc0a942ccd773e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":190.6960950764007,\"y\":84.34634974533107,\"z\":1,\"width\":184.58404074702887,\"height\":116.12903225806451}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Lost Customers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Lost Customers\"},\"Name\":\"tb_Measures.Lost Customers\",\"NativeReferenceName\":\"Lost Customers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Lost Customers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}}",
+          "config": "{\"name\":\"b4509fcc0a942ccd773e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":190.6960950764007,\"y\":84.34634974533107,\"z\":1000,\"width\":184.58404074702887,\"height\":116.12903225806451,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Lost Customers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Lost Customers\"},\"Name\":\"tb_Measures.Lost Customers\",\"NativeReferenceName\":\"Lost Customers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Lost Customers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"titleWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}}",
           "filters": "[]",
           "height": 116.13,
           "width": 184.58,
           "x": 190.70,
           "y": 84.35,
-          "z": 1.00
+          "z": 1000.00
         },
         {
-          "config": "{\"name\":\"d029259983be29a24aaa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":25.67062818336163,\"y\":84.34634974533107,\"z\":2,\"width\":165.02546689303907,\"height\":116.12903225806451}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Total Customers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"},\"Name\":\"tb_Measures.Total Customers\",\"NativeReferenceName\":\"Total Customers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"be2d63833bd5f47bd173\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":254.26146010186758,\"z\":4000,\"width\":286.044142614601,\"height\":217.5891341256367,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Country\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Country\"},\"Name\":\"Bank Customer Churn Prediction.Country\",\"NativeReferenceName\":\"Country\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 217.59,
+          "width": 286.04,
+          "x": 0.00,
+          "y": 254.26,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"c0b2799317ab90adc7aa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":875,\"y\":94,\"width\":405,\"height\":158,\"z\":11001,\"tabOrder\":11001}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Products Number\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Products Number\"},\"Name\":\"Bank Customer Churn Prediction.Products Number\",\"NativeReferenceName\":\"Products Number\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 158.00,
+          "width": 405.00,
+          "x": 875.00,
+          "y": 94.00,
+          "z": 11001.00
+        },
+        {
+          "config": "{\"name\":\"c798f478fb4d46d1e1ce\",\"layouts\":[{\"id\":0,\"position\":{\"x\":427.8438030560272,\"y\":492.63157894736844,\"z\":10000,\"width\":462.0713073005094,\"height\":227.3684210526316,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Credit Score Bins\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Y2\":[{\"queryRef\":\"tb_Measures.Churn Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0},{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Credit Score Bins\"},\"Name\":\"Bank Customer Churn Prediction.Credit Score Bins\",\"NativeReferenceName\":\"Credit Score Bins\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"tb_Measures.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 227.37,
+          "width": 462.07,
+          "x": 427.84,
+          "y": 492.63,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"d029259983be29a24aaa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":25.67062818336163,\"y\":84.34634974533107,\"z\":2000,\"width\":165.02546689303907,\"height\":116.12903225806451,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Total Customers\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"},\"Name\":\"tb_Measures.Total Customers\",\"NativeReferenceName\":\"Total Customers\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Total Customers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 116.13,
           "width": 165.03,
           "x": 25.67,
           "y": 84.35,
-          "z": 2.00
+          "z": 2000.00
         },
         {
-          "config": "{\"name\":\"df6ddacce65f4bfc5460\",\"layouts\":[{\"id\":0,\"position\":{\"x\":375.28013582342953,\"y\":84.34634974533107,\"z\":3,\"width\":187.0288624787776,\"height\":116.12903225806451}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Churn Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"tb_Measures.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "config": "{\"name\":\"df6ddacce65f4bfc5460\",\"layouts\":[{\"id\":0,\"position\":{\"x\":375.28013582342953,\"y\":84.34634974533107,\"z\":3000,\"width\":187.0288624787776,\"height\":116.12903225806451,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"tb_Measures.Churn Rate\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"t\",\"Entity\":\"tb_Measures\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"},\"Name\":\"tb_Measures.Churn Rate\",\"NativeReferenceName\":\"Churn Rate\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"t\"}},\"Property\":\"Churn Rate\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
           "filters": "[]",
           "height": 116.13,
           "width": 187.03,
           "x": 375.28,
           "y": 84.35,
-          "z": 3.00
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"df73934609e45a0c3cf1\",\"layouts\":[{\"id\":0,\"position\":{\"x\":276.26485568760614,\"y\":251.81663837011885,\"z\":5000,\"width\":286.044142614601,\"height\":217.5891341256367,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Y\":[{\"queryRef\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\"}],\"Category\":[{\"queryRef\":\"Bank Customer Churn Prediction.Churn\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"b\",\"Entity\":\"Bank Customer Churn Prediction\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5},\"Name\":\"CountNonNull(Bank Customer Churn Prediction.Customer Id)\",\"NativeReferenceName\":\"Customer Id\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Churn\"},\"Name\":\"Bank Customer Churn Prediction.Churn\",\"NativeReferenceName\":\"Churn\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"b\"}},\"Property\":\"Customer Id\"}},\"Function\":5}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 217.59,
+          "width": 286.04,
+          "x": 276.26,
+          "y": 251.82,
+          "z": 5000.00
         }
       ],
       "width": 1280.00
